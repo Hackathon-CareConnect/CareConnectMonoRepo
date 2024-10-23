@@ -31,7 +31,6 @@ const FallDetection = ({ onFallDetected }) => {
   const detectFall = () => {
     const threshold = 1.5; // Example threshold for fall detection, adjust as necessary
     const magnitude = Math.sqrt(x * x + y * y + z * z); // Calculate the magnitude of the acceleration
-    console.log(data)
     if (magnitude > threshold) {
       console.log('Fall detected');
       onFallDetected(); // Trigger the callback when a fall is detected

@@ -11,7 +11,7 @@ const AdminNotificationSchema = new mongoose.Schema({
         default: "No patients have fallen."
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId, // This references the _id from the User model
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }
@@ -19,7 +19,7 @@ const AdminNotificationSchema = new mongoose.Schema({
 
 // Function to update the walkaway notification based on patient location
 AdminNotificationSchema.methods.updateWalkawayNotification = async function(patientLocation, googleMapsVacinity) {
-    await this.populate('userId', 'username'); // Populate the username from User model
+    await this.populate('userId', 'username');
     if (patientLocation !== googleMapsVacinity) {
         this.walkaway = `EMERGENCY: PATIENT ${this.userId.username} HAS WALKED OFFSITE!`;
     } else {
@@ -29,7 +29,7 @@ AdminNotificationSchema.methods.updateWalkawayNotification = async function(pati
 
 // Function to update the fall notification based on a fall alert
 AdminNotificationSchema.methods.updateFallNotification = async function(patientFall) {
-    await this.populate('userId', 'username'); // Populate the username from User model
+    await this.populate('userId', 'username');
     if (patientFall === true) {
         this.fall = `EMERGENCY: PATIENT ${this.userId.username} HAS FALLEN!`;
     } else {

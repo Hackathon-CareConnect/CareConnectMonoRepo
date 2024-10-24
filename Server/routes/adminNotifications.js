@@ -12,7 +12,7 @@ router.get('/:userId', async (req, res) => {
         }
         res.json(notifications);
     } catch (error) {
-        console.error(error); // Log the error for debugging
+        console.error(error);
         res.status(500).json({ message: 'Server error', error });
     }
 });
@@ -24,19 +24,17 @@ router.post('/create', async (req, res) => {
         let notification = await AdminNotification.findOne({ userId });
 
         if (notification) {
-            // Update existing notification
             notification.walkaway = walkaway;
             notification.fall = fall;
             await notification.save();
             return res.json({ message: 'Notification updated successfully', notification });
         } else {
-            // Create a new notification
             notification = new AdminNotification({ userId, walkaway, fall });
             await notification.save();
             return res.json({ message: 'Notification created successfully', notification });
         }
     } catch (error) {
-        console.error(error); // Log the error for debugging
+        console.error(error);
         res.status(400).json({ message: 'Failed to create/update notification', error });
     }
 });

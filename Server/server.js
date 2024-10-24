@@ -19,7 +19,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/notifications', adminNotificationRoutes); // Set up the notifications route
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI||"mongodb+srv://zachlyons1212:KXlHJ64QiNgnSAv9@careconnectdb.xtthl.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch((error) => console.log('Error connecting to MongoDB:', error));
 

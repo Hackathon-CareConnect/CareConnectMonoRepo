@@ -13,22 +13,24 @@ const Login = () => {
         username,
         password,
       });
-      setNotification(response.data.notification);
-      alert(response.data.message);
+      setNotification(response.data.notification || ''); // Handle notification if exists
+      alert(response.data.message); // Display success message
     } catch (error) {
-      console.error(error.response.data.message);
-      alert('Login failed');
+      console.error(error);
+      const errorMessage = error.response ? error.response.data.message : 'Login failed'; // Handle error message
+      alert(errorMessage); // Display error message
     }
   };
 
   return (
-<div style={styles.container}>
-  <div className='header'>
-    <h1>CareConnect</h1>
-  </div>
+    <div style={styles.container}>
+      <div className='header'>
+        <h1>CareConnect</h1>
+      </div>
       <h2 className='login'>Login</h2>
       <form onSubmit={handleLogin} style={styles.form}>
-        <input className='Username'
+        <input
+          className='Username'
           type="text"
           placeholder="Username"
           value={username}
@@ -36,7 +38,8 @@ const Login = () => {
           required
           style={styles.input}
         />
-        <input className='password'
+        <input
+          className='password'
           type="password"
           placeholder="Password"
           value={password}
@@ -47,9 +50,9 @@ const Login = () => {
         <button type="submit" style={styles.button} className='button'>Login</button>
       </form>
       {notification && <p>{notification}</p>}
-        <div style={styles.createAccount}>
+      <div style={styles.createAccount}>
         <a href="/register">Create an account </a>
-        </div>
+      </div>
     </div>
   );
 };
@@ -61,7 +64,6 @@ const styles = {
     alignItems: 'center',
     marginTop: '50px',
   },
-
   form: {
     display: 'flex',
     flexDirection: 'column',

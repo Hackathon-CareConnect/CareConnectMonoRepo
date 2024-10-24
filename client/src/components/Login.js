@@ -22,10 +22,13 @@ const Login = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h2>Login</h2>
+<div style={styles.container}>
+  <div className='header'>
+    <h1>CareConnect</h1>
+  </div>
+      <h2 className='login'>Login</h2>
       <form onSubmit={handleLogin} style={styles.form}>
-        <input
+        <input className='Username'
           type="text"
           placeholder="Username"
           value={username}
@@ -33,7 +36,7 @@ const Login = () => {
           required
           style={styles.input}
         />
-        <input
+        <input className='password'
           type="password"
           placeholder="Password"
           value={password}
@@ -41,9 +44,12 @@ const Login = () => {
           required
           style={styles.input}
         />
-        <button type="submit" style={styles.button}>Login</button>
+        <button type="submit" style={styles.button} className='button'>Login</button>
       </form>
       {notification && <p>{notification}</p>}
+        <div style={styles.createAccount}>
+        <a href="/register">Create an account </a>
+        </div>
     </div>
   );
 };
@@ -55,6 +61,7 @@ const styles = {
     alignItems: 'center',
     marginTop: '50px',
   },
+
   form: {
     display: 'flex',
     flexDirection: 'column',
@@ -71,6 +78,10 @@ const styles = {
     border: 'none',
     cursor: 'pointer',
   },
+  createAccount: {
+    marginTop: '20px',
+    fontSize: '14px',
+  }
 };
 
 export default Login;

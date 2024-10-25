@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CreateAccount = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [notification, setNotification] = useState('');
+  const navigate = useNavigate()
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -16,7 +18,9 @@ const CreateAccount = () => {
         email,
       });
       setNotification(response.data.message);
-      alert(response.data.message); // Notify the user about the result
+      setTimeout(() => {
+        navigate("/")
+      }, 1000)
     } catch (error) {
       console.error(error.response.data.message);
       alert('Registration failed');

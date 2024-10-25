@@ -139,7 +139,7 @@ const Login = () => {
             {user?.userId && (
                 <>
                     <h2 className="signed">
-                        Bienvenido a CareConnect {user.username}
+                        Welcome to CareConnect {user.username}
                     </h2>
                     <Button
                         variant="outlined"

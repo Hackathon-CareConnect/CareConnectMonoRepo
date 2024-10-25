@@ -12,7 +12,7 @@ const MonitoringScreen = ({ navigation }) => {
         // Send a notification to the server
         try {
             const response = await axios.post(URL, {
-                userId: "671ba6db060fa28c9abb7b66", // Replace with the actual user ID
+                userId: "671ba6db060fa28c9abb7b66",
                 walkaway: null,
                 fall: `EMERGENCY: PATIENT IN Room 301 HAS FALLEN!`,
             });
